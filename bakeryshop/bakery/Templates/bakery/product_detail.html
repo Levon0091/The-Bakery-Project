@@ -1,5 +1,7 @@
 {% extends 'bakery/base.html' %}
 
+{% load humanize %}
+
 {% block title %}{{ product.name }}{% endblock %}
 
 {% block content %}
@@ -13,7 +15,7 @@
     {% endif %}
 
     <p>{{ product.description }}</p>
-    <p><strong>Цена:</strong> {{ product.price }}֏</p>
+    <p><strong>Цена:</strong> {{ product.price|intcomma }} ֏</p>
 
     <form method="post" action="{% url 'add_to_cart' product.id %}" class="mb-4">
         {% csrf_token %}

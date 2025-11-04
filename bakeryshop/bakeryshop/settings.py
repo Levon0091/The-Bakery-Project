@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'bakery',
     'accounts',
     'bakeryshop',
-    'widget_tweaks'
+    'widget_tweaks',
+    'django.contrib.humanize'
 ]
 
 MIDDLEWARE = [
