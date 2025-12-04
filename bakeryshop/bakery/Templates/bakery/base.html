@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="ru">
+{% load i18n static %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
-    {% load static %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{% block title %}Bakery Shop{% endblock %}</title>
+    <title>{% block title %}{% trans "Bakery Shop" %}{% endblock %}</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -12,72 +14,108 @@
 
     <style>
         .offcanvas-start { width: 250px; }
+        .language-dropdown img { width: 25px; height: 16px; margin-right: 5px; border-radius: 3px; }
+        .language-dropdown .dropdown-menu img { margin-right: 5px; }
+        .language-dropdown .dropdown-toggle { display: flex; align-items: center; padding: 2px 8px; font-size: 0.9rem; }
+        main.container { margin-top: 20px; }
+        footer.bg-light { margin-top: 40px; padding-top: 1rem; padding-bottom: 1rem; text-align: center; }
     </style>
 </head>
 <body>
 
 <header class="bg-light p-3 mb-4">
-  <div class="container">
-    <div class="d-flex justify-content-between align-items-center">
-      <h1><a href="{% url 'index' %}" class="text-decoration-none text-dark">🍞 Bakery Shop</a></h1>
+  <div class="container d-flex align-items-center">
+    <h1 class="m-0">
+      <a href="{% url 'index' %}" class="text-decoration-none text-dark">🍞 {% trans "Bakery Shop" %}</a>
+    </h1>
 
-      {% if user.is_authenticated %}
-        <button class="btn btn-outline-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#profileSidebar" aria-controls="profileSidebar">&#9776;</button>
-      {% endif %}
-    </div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mt-2">
-      <div class="container-fluid">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="{% url 'product_list' %}">Все товары</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'cart' %}">Корзина</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'order_history' %}">История заказов</a></li>
-        </ul>
-        <ul class="navbar-nav ms-auto">
-          {% if not user.is_authenticated %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Войти</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Зарегистрироваться</a></li>
+    {% if user.is_authenticated %}
+      <button class="btn btn-outline-secondary ms-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#profileSidebar" aria-controls="profileSidebar">&#9776;</button>
+    {% endif %}
+
+    <div class="dropdown ms-auto language-dropdown">
+      <form action="{% url 'set_language' %}" method="post" class="d-inline">
+        {% csrf_token %}
+        {% for lang in languages %}
+          {% if lang.code == LANGUAGE_CODE %}
+            <button class="btn btn-light dropdown-toggle" type="button" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="{% static 'images/flags/'|add:lang.code|add:'.png' %}" alt="{{ lang.name_local }}">
+              {% if lang.code == 'uk' %}UA{% else %}{{ lang.code|upper }}{% endif %}
+            </button>
           {% endif %}
+        {% endfor %}
+
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="langDropdown">
+          {% for lang in languages %}
+            {% if lang.code != LANGUAGE_CODE %}
+              <li>
+                <button type="submit" name="language" value="{{ lang.code }}" class="dropdown-item">
+                  <img src="{% static 'images/flags/'|add:lang.code|add:'.png' %}" alt="{{ lang.name_local }}">
+                  {% if lang.code == 'uk' %}UA{% else %}{{ lang.code|upper }}{% endif %} - {{ lang.name_local }}
+                </button>
+              </li>
+            {% endif %}
+          {% endfor %}
         </ul>
-      </div>
-    </nav>
+      </form>
+    </div>
   </div>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mt-2">
+    <div class="container-fluid">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="{% url 'product_list' %}">{% trans "Все товары" %}</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'cart' %}">{% trans "Корзина" %}</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'order_history' %}">{% trans "История заказов" %}</a></li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+        {% if not user.is_authenticated %}
+          <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">{% trans "Войти" %}</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">{% trans "Зарегистрироваться" %}</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
 </header>
 
 <div class="offcanvas offcanvas-start" tabindex="-1" id="profileSidebar" aria-labelledby="profileSidebarLabel">
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="profileSidebarLabel">Профиль</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+    <h5 class="offcanvas-title" id="profileSidebarLabel">{% trans "Профиль" %}</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="{% trans 'Закрыть' %}"></button>
   </div>
   <div class="offcanvas-body">
     <ul class="list-group">
-      <li class="list-group-item"><a href="{% url 'edit_profile' %}">Редактировать профиль</a></li>
-      <li class="list-group-item"><a href="{% url 'change_avatar' %}">Изменить аватар</a></li>
-      <li class="list-group-item"><a href="{% url 'cart' %}">Корзина</a></li>
-      <li class="list-group-item"><a href="{% url 'order_history' %}">История заказов</a></li>
-      <li class="list-group-item"><a href="{% url 'delete_account' %}" class="text-danger">Удалить аккаунт</a></li>
-      <li class="list-group-item"><a href="{% url 'logout' %}">Выход</a></li>
+      <li class="list-group-item"><a href="{% url 'edit_profile' %}">{% trans "Редактировать профиль" %}</a></li>
+      <li class="list-group-item"><a href="{% url 'change_avatar' %}">{% trans "Изменить аватар" %}</a></li>
+      <li class="list-group-item"><a href="{% url 'cart' %}">{% trans "Корзина" %}</a></li>
+      <li class="list-group-item"><a href="{% url 'order_history' %}">{% trans "История заказов" %}</a></li>
+      <li class="list-group-item"><a href="{% url 'delete_account' %}" class="text-danger">{% trans "Удалить аккаунт" %}</a></li>
+      <li class="list-group-item"><a href="{% url 'logout' %}">{% trans "Выход" %}</a></li>
     </ul>
   </div>
 </div>
 
 <main class="container">
     {% if messages %}
-    <div class="my-3" style="margin-top: 1rem;">
+    <div class="my-3">
       {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert" data-bs-delay="4000" data-bs-autohide="true">
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
           {{ message }}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрыть"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{% trans 'Закрыть' %}"></button>
         </div>
       {% endfor %}
     </div>
     {% endif %}
+
     {% block content %}{% endblock %}
 </main>
 
 <footer class="bg-light text-center py-3 mt-4">
-  <p>&copy; 2025 Bakery Shop</p>
+  <p>&copy; 2025 {% trans "Bakery Shop" %}</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+

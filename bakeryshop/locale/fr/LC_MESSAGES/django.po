@@ -1,0 +1,195 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-04 17:58+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\bakery\Templates\bakery\base.html:9 .\bakery\Templates\bakery\base.html:48
+#: .\bakery\Templates\bakery\base.html:133
+msgid "Bakery Shop"
+msgstr "Boulangerie"
+
+#: .\bakery\Templates\bakery\base.html:85
+msgid "Все товары"
+msgstr "Tous Les Produits"
+
+#: .\bakery\Templates\bakery\base.html:86
+#: .\bakery\Templates\bakery\base.html:109
+#: .\bakery\Templates\bakery\cart.html:3
+msgid "Корзина"
+msgstr ""
+
+#: .\bakery\Templates\bakery\base.html:87
+#: .\bakery\Templates\bakery\base.html:110
+msgid "История заказов"
+msgstr "Historique Des Commandes"
+
+#: .\bakery\Templates\bakery\base.html:92
+msgid "Войти"
+msgstr "Se Connecter"
+
+#: .\bakery\Templates\bakery\base.html:93
+msgid "Зарегистрироваться"
+msgstr "S’inscrire"
+
+#: .\bakery\Templates\bakery\base.html:102
+msgid "Профиль"
+msgstr ""
+
+#: .\bakery\Templates\bakery\base.html:103
+#: .\bakery\Templates\bakery\base.html:123
+msgid "Закрыть"
+msgstr "Fermer"
+
+#: .\bakery\Templates\bakery\base.html:107
+msgid "Редактировать профиль"
+msgstr "Modifier Le Profil"
+
+#: .\bakery\Templates\bakery\base.html:108
+msgid "Изменить аватар"
+msgstr "Changer L’Avatar"
+
+#: .\bakery\Templates\bakery\base.html:111
+msgid "Удалить аккаунт"
+msgstr "Supprimer Le Compte"
+
+#: .\bakery\Templates\bakery\base.html:112
+msgid "Выход"
+msgstr "Se Déconnecter"
+
+#: .\bakery\Templates\bakery\cart.html:7
+msgid "Ваша корзина"
+msgstr ""
+
+#: .\bakery\Templates\bakery\cart.html:12
+#, fuzzy
+#| msgid "Все товары"
+msgid "Товар"
+msgstr "Tous Les Produits"
+
+#: .\bakery\Templates\bakery\cart.html:13
+msgid "Цена"
+msgstr ""
+
+#: .\bakery\Templates\bakery\cart.html:14
+msgid "Количество"
+msgstr ""
+
+#: .\bakery\Templates\bakery\cart.html:15
+msgid "Итого"
+msgstr ""
+
+#: .\bakery\Templates\bakery\cart.html:29
+#, fuzzy
+#| msgid "Удалить аккаунт"
+msgid "Удалить"
+msgstr "Supprimer Le Compte"
+
+#: .\bakery\Templates\bakery\cart.html:39
+msgid "Общая сумма:"
+msgstr ""
+
+#: .\bakery\Templates\bakery\cart.html:47
+msgid "Продолжить покупки 🥖"
+msgstr ""
+
+#: .\bakery\Templates\bakery\cart.html:50
+msgid "Очистить корзину?"
+msgstr ""
+
+#: .\bakery\Templates\bakery\cart.html:50
+msgid "Очистить корзину 🗑️"
+msgstr ""
+
+#: .\bakery\Templates\bakery\cart.html:51
+#, fuzzy
+#| msgid "История заказов"
+msgid "Оформить заказ ✅"
+msgstr "Historique Des Commandes"
+
+#: .\bakery\Templates\bakery\cart.html:56
+msgid "Ваша корзина пуста."
+msgstr ""
+
+#: .\bakery\Templates\bakery\cart.html:56
+msgid "Перейти к покупкам"
+msgstr ""
+
+#: .\bakery\Templates\bakery\checkout.html:3
+#: .\bakery\Templates\bakery\checkout.html:8
+#, fuzzy
+#| msgid "История заказов"
+msgid "Оформление заказа"
+msgstr "Historique Des Commandes"
+
+#: .\bakery\Templates\bakery\checkout.html:14
+msgid "Полное имя"
+msgstr ""
+
+#: .\bakery\Templates\bakery\checkout.html:18
+msgid "Телефон"
+msgstr ""
+
+#: .\bakery\Templates\bakery\checkout.html:22
+msgid "Адрес доставки"
+msgstr ""
+
+#: .\bakery\Templates\bakery\checkout.html:27
+msgid "Перейти к оплате 💳"
+msgstr ""
+
+#: .\bakery\Templates\bakery\index.html:3
+msgid "Главная Страница"
+msgstr ""
+
+#: .\bakery\Templates\bakery\index.html:8
+msgid "Добро пожаловать в Bakery Shop!"
+msgstr ""
+
+#: .\bakery\Templates\bakery\index.html:9
+msgid "Вкуснейшая выпечка, свежие продукты, и всё это с доставкой прямо к вам!"
+msgstr ""
+
+#: .\bakery\Templates\bakery\index.html:10
+msgid "Перейти в каталог"
+msgstr ""
+
+#: .\bakery\Templates\bakery\index.html:24
+#: .\bakery\Templates\bakery\index.html:61
+#: .\bakery\Templates\bakery\index.html:83
+msgid "Подробнее"
+msgstr ""
+
+#: .\bakery\Templates\bakery\index.html:36
+msgid "Популярные категории"
+msgstr ""
+
+#: .\bakery\Templates\bakery\index.html:52
+msgid "Хиты продаж"
+msgstr ""
+
+#: .\bakery\Templates\bakery\index.html:73
+msgid "Ограниченная серия"
+msgstr ""
+
+#: .\bakery\Templates\bakery\index.html:92
+msgid "Предыдущий"
+msgstr ""
+
+#: .\bakery\Templates\bakery\index.html:96
+msgid "Следующий"
+msgstr ""

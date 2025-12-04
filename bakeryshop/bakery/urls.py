@@ -18,6 +18,7 @@ urlpatterns = [
     path('orders/<int:order_id>/continue_payment/', views.continue_payment, name='continue_payment'),
     path('orders/<int:order_id>/cancel_unpaid/', views.cancel_order, name='cancel_unpaid_order'),
     path('orders/<int:order_id>/refund/', views.request_refund, name='request_refund'),
-
+    path('change-lang/<str:lang>/', views.change_language, name='change_language'),
 ]
+
 

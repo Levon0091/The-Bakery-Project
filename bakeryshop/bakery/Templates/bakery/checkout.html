@@ -1,29 +1,30 @@
 {% extends 'bakery/base.html' %}
-{% block title %}Оформление заказа{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Оформление заказа" %}{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
   <div class="card shadow-lg p-4">
-    <h2 class="mb-4">📝 Оформление заказа</h2>
+    <h2 class="mb-4">📝 {% trans "Оформление заказа" %}</h2>
 
     <form method="post">
       {% csrf_token %}
       <div class="row">
         <div class="col-md-6 mb-3">
-          <label for="full_name" class="form-label">👤 Полное имя</label>
+          <label for="full_name" class="form-label">👤 {% trans "Полное имя" %}</label>
           <input type="text" name="full_name" id="full_name" class="form-control" required>
         </div>
         <div class="col-md-6 mb-3">
-          <label for="phone" class="form-label">📞 Телефон</label>
+          <label for="phone" class="form-label">📞 {% trans "Телефон" %}</label>
           <input type="tel" name="phone" id="phone" class="form-control" required>
         </div>
         <div class="col-12 mb-3">
-          <label for="address" class="form-label">📍 Адрес доставки</label>
+          <label for="address" class="form-label">📍 {% trans "Адрес доставки" %}</label>
           <textarea name="address" id="address" rows="3" class="form-control" required></textarea>
         </div>
       </div>
       <div class="d-flex justify-content-end">
-        <button class="btn btn-primary px-4" type="submit">Перейти к оплате 💳</button>
+        <button class="btn btn-primary px-4" type="submit">{% trans "Перейти к оплате 💳" %}</button>
       </div>
     </form>
   </div>

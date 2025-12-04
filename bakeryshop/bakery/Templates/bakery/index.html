@@ -1,13 +1,13 @@
 {% extends 'bakery/base.html' %}
-
-{% block title %}Главная Страница{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Главная Страница" %}{% endblock %}
 
 {% block content %}
 <section class="hero bg-primary text-white text-center py-5">
     <div class="container">
-        <h1 class="display-4 mb-3">Добро пожаловать в Bakery Shop!</h1>
-        <p class="lead mb-4">Вкуснейшая выпечка, свежие продукты, и всё это с доставкой прямо к вам!</p>
-        <a href="{% url 'product_list' %}" class="btn btn-light btn-lg">Перейти в каталог</a>
+        <h1 class="display-4 mb-3">{% trans "Добро пожаловать в Bakery Shop!" %}</h1>
+        <p class="lead mb-4">{% trans "Вкуснейшая выпечка, свежие продукты, и всё это с доставкой прямо к вам!" %}</p>
+        <a href="{% url 'product_list' %}" class="btn btn-light btn-lg">{% trans "Перейти в каталог" %}</a>
     </div>
 </section>
 
@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ product.name }}</h5>
                         <p class="card-text">{{ product.description|truncatewords:20 }}</p>
-                        <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">Подробнее</a>
+                        <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">{% trans "Подробнее" %}</a>
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
 <!-- 🎯 Избранные категории -->
 <section class="py-5 bg-light text-center">
   <div class="container">
-    <h2 class="mb-4">Популярные категории</h2>
+    <h2 class="mb-4">{% trans "Популярные категории" %}</h2>
     <div class="row justify-content-center">
       {% for category in featured_categories %}
       <div class="col-6 col-md-4 col-lg-3 mb-3">
@@ -49,7 +49,7 @@
 <!-- ⭐ Популярные товары -->
 <section class="py-5">
   <div class="container">
-    <h2 class="mb-4 text-center">Хиты продаж</h2>
+    <h2 class="mb-4 text-center">{% trans "Хиты продаж" %}</h2>
     <div class="row">
       {% for product in popular_products %}
       <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
@@ -58,7 +58,7 @@
           <div class="card-body d-flex flex-column">
             <h6 class="card-title">{{ product.name }}</h6>
             <p class="card-text small">{{ product.description|truncatewords:10 }}</p>
-            <a href="{% url 'product_detail' product.id %}" class="btn btn-sm btn-outline-primary mt-auto">Подробнее</a>
+            <a href="{% url 'product_detail' product.id %}" class="btn btn-sm btn-outline-primary mt-auto">{% trans "Подробнее" %}</a>
           </div>
         </div>
       </div>
@@ -70,7 +70,7 @@
 <!-- 🌀 Слайдер ограниченной выпечки -->
 <section class="py-5 bg-light">
   <div class="container">
-    <h2 class="mb-4 text-center">Ограниченная серия</h2>
+    <h2 class="mb-4 text-center">{% trans "Ограниченная серия" %}</h2>
     <div id="limitedSlider" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         {% for product in limited_products %}
@@ -80,7 +80,7 @@
               <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
               <div class="card-body text-center">
                 <h5 class="card-title">{{ product.name }}</h5>
-                <a href="{% url 'product_detail' product.id %}" class="btn btn-warning btn-sm">Подробнее</a>
+                <a href="{% url 'product_detail' product.id %}" class="btn btn-warning btn-sm">{% trans "Подробнее" %}</a>
               </div>
             </div>
           </div>
@@ -89,11 +89,11 @@
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#limitedSlider" data-bs-slide="prev">
         <span class="carousel-control-prev-icon"></span>
-        <span class="visually-hidden">Предыдущий</span>
+        <span class="visually-hidden">{% trans "Предыдущий" %}</span>
       </button>
       <button class="carousel-control-next" type="button" data-bs-target="#limitedSlider" data-bs-slide="next">
         <span class="carousel-control-next-icon"></span>
-        <span class="visually-hidden">Следующий</span>
+        <span class="visually-hidden">{% trans "Следующий" %}</span>
       </button>
     </div>
   </div>

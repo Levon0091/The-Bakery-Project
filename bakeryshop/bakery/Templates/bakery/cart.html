@@ -1,17 +1,18 @@
 {% extends 'bakery/base.html' %}
-{% block title %}Корзина{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Корзина" %}{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
-  <h2 class="mb-4">🛒 Ваша корзина</h2>
+  <h2 class="mb-4">🛒 {% trans "Ваша корзина" %}</h2>
   {% if cart_items %}
     <table class="table table-striped table-hover align-middle">
       <thead class="table-dark">
         <tr>
-          <th>Товар</th>
-          <th>Цена</th>
-          <th>Количество</th>
-          <th>Итого</th>
+          <th>{% trans "Товар" %}</th>
+          <th>{% trans "Цена" %}</th>
+          <th>{% trans "Количество" %}</th>
+          <th>{% trans "Итого" %}</th>
           <th></th>
         </tr>
       </thead>
@@ -25,7 +26,7 @@
           <td>
             <form method="post" action="{% url 'remove_from_cart' item.id %}" style="display:inline;">
               {% csrf_token %}
-              <button type="submit" class="btn btn-sm btn-outline-danger" title="Удалить">
+              <button type="submit" class="btn btn-sm btn-outline-danger" title="{% trans 'Удалить' %}">
                 &times;
               </button>
             </form>
@@ -35,7 +36,7 @@
       </tbody>
       <tfoot>
         <tr class="table-secondary fw-bold">
-          <td colspan="3" class="text-end">Общая сумма:</td>
+          <td colspan="3" class="text-end">{% trans "Общая сумма:" %}</td>
           <td>{{ total }}֏</td>
           <td></td>
         </tr>
@@ -43,16 +44,16 @@
     </table>
 
     <div class="d-flex justify-content-between">
-      <a href="{% url 'product_list' %}" class="btn btn-outline-primary">Продолжить покупки 🥖</a>
+      <a href="{% url 'product_list' %}" class="btn btn-outline-primary">{% trans "Продолжить покупки 🥖" %}</a>
       <div>
         <a href="{% url 'clear_cart' %}" class="btn btn-outline-danger me-2"
-           onclick="return confirm('Очистить корзину?')">Очистить корзину 🗑️</a>
-        <a href="{% url 'checkout' %}" class="btn btn-success">Оформить заказ ✅</a>
+           onclick="return confirm('{% trans "Очистить корзину?" %}')">{% trans "Очистить корзину 🗑️" %}</a>
+        <a href="{% url 'checkout' %}" class="btn btn-success">{% trans "Оформить заказ ✅" %}</a>
       </div>
     </div>
 
   {% else %}
-    <p class="lead text-muted">Ваша корзина пуста. <a href="{% url 'product_list' %}">Перейти к покупкам</a></p>
+    <p class="lead text-muted">{% trans "Ваша корзина пуста." %} <a href="{% url 'product_list' %}">{% trans "Перейти к покупкам" %}</a></p>
   {% endif %}
 </div>
 {% endblock %}

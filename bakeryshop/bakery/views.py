@@ -3,8 +3,19 @@ from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+
 from .forms import ReviewForm
 from .models import Product, Order, OrderItem, Category, Review
+
+from django.conf import settings
+from django.utils import translation
+
+def change_language(request, lang):
+    if lang in dict(settings.LANGUAGES):
+        request.session['django_language'] = lang
+        translation.activate(lang)
+    return redirect(request.META.get('HTTP_REFERER', '/'))
+
 
 def index(request):
     featured_categories = Category.objects.filter(is_featured=True)[:3]

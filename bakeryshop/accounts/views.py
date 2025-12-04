@@ -8,6 +8,9 @@ from django.http import HttpResponse
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from django.contrib.auth.forms import PasswordChangeForm
+from django.utils import translation
+from django.conf import settings
+
 import logging
 
 from .forms import (

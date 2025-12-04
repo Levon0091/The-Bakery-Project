@@ -1,0 +1,34 @@
+.offcanvas-start {
+    width: 250px;
+}
+
+.language-switcher {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.language-switcher img {
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 3px;
+    transition: border 0.2s;
+}
+
+.language-switcher img.active {
+    border-color: #000;
+}
+
+.language-switcher img:hover {
+    border-color: #555;
+}
+
+.alert {
+    margin-top: 1rem;
+}
+
+.alert-dismissible .btn-close {
+    float: right;
+    font-size: 1.2rem;
+}
